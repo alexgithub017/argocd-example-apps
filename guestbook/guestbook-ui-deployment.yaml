@@ -7,14 +7,21 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: guestbook-hollyui
+      app: guestbook-ui
   template:
     metadata:
       labels:
-        app: guestbook-hollyui
+        app: guestbook-ui
     spec:
       containers:
       - image: hekai/gcr.io_heptio-images_ks-guestbook-demo_0.2
-        name: guestbook-hollyui
+        name: guestbook-ui
         ports:
         - containerPort: 80
+      - resources:
+          requests:
+            memory: 2Mi
+            cpu: 0.1
+          limits:
+            memory: 100Mi
+            cpu: 0.1
